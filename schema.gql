@@ -1,0 +1,32 @@
+# Defines a single movie in our watchlist
+type Movie {
+  id: ID!
+  title: String!
+  rating: Int
+  platforms: [String!]
+  genres: [String!]
+}
+
+# Defines the queries (read operations) our API supports
+type Query {
+  # Gets a list of all movies in the watchlist
+  getMovieList: [Movie]
+
+  # Gets a single movie by its title
+  getMovieByTitle(title: String!): Movie
+
+  # Gets a list of movies filtered by a specific genre
+  getMovieListByGenre(genre: String!): [Movie]
+}
+
+# Defines the mutations (write operations) our API supports
+type Mutation {
+  # Adds a new movie to the watchlist
+  addMovie(title: String!): Movie
+}
+
+# The schema defines the root query and mutation types
+schema {
+  query: Query
+  mutation: Mutation
+}
